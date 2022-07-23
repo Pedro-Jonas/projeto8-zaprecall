@@ -1,21 +1,49 @@
 import virar from "./img/setinha.png"
 import React from "react";
 
-function Card(props){
-    const [PlayQuestion, setPlayQuestions] = React.useState(false);
-    return(PlayQuestion? ( 
-    <div className="card selected">
+function CardInitial(props){
+    return(
+    <div className="card">
+        Pergunta {props.number}
+        <ion-icon name="play-outline" onClick={()=> props.setPlayQuestions(true)}></ion-icon>
+    </div>
+    );
+};
+
+function CardSelected(props){
+    const [Rotate, setRotate] = React.useState(false)
+    return( Rotate? 
+    (<div className="card selected">
+        <div className="answer">
+        {props.answer}
+        </div>
+        <div className="options">
+            <div className="buttons red">
+                <p>Não</p> <p>lembrei</p>
+            </div>
+            <div className="buttons orange">
+                <p>Quase Não</p> <p>lembrei</p>
+            </div>
+            <div className="buttons green">
+                zap!
+            </div>
+        </div>
+    </div>) :
+    (<div className="card selected">
         <div>
             {props.question}
         </div>
         <div className="setinha">
-            <img src={virar} alt="Virar"/>
+            <img src={virar} alt="Virar" onClick={()=>setRotate(true)}/>
         </div>
-    </div>) : ( 
-    <div className="card">
-        Pergunta {props.number}
-        <ion-icon name="play-outline" onClick={()=> setPlayQuestions(true)}></ion-icon>
-    </div>)
+     </div>)
+    );
+};
+
+function Card(props){
+    const [PlayQuestion, setPlayQuestions] = React.useState(false);
+    return(PlayQuestion? (<CardSelected question={props.question} answer={props.answer}/>) : 
+    (<CardInitial number={props.number} setPlayQuestions={setPlayQuestions}/>)
     );
 }
 
@@ -42,7 +70,7 @@ function Cards(){
         {number: 3, question: questions[2].Q, answer: questions[2].R},
         {number: 4, question: questions[3].Q, answer: questions[3].R},
         {number: 5, question: questions[4].Q, answer: questions[4].R},
-        {number: 5, question: questions[5].Q, answer: questions[5].R},
+        {number: 6, question: questions[5].Q, answer: questions[5].R},
         {number: 7, question: questions[6].Q, answer: questions[6].R},
         {number: 8, question: questions[7].Q, answer: questions[7].R},
     ];

@@ -11,7 +11,7 @@ function Initial(){
     );
 }
 
-function Fundo(){
+function Progress(){
     return(
     <div className="fundo andamendo">
         0/8 CONCLUÍDOS
@@ -24,7 +24,7 @@ function Tela2(){
         <>
         <Initial/>
         <Cards/>
-        <Fundo/>
+        <Progress/>
         </>
     );
 }
