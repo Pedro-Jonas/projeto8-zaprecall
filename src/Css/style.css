@@ -99,3 +99,28 @@ div {
     left: 0;
     background-color: #FFFFFF;
 }
+
+.selected{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 16px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    width: 299px;
+    height: 131px;
+}
+
+.setinha{
+    width: 100%;
+    align-items: flex-end;
+}
+
+.setinha img{ 
+    color: #333333;
+    width: 30px;
+    height: 20px;
+}
