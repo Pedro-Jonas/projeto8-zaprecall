@@ -1,5 +1,6 @@
 import logo2 from "./img/logo-pequeno.png"
 import Cards from "./Cards";
+import Progress from "./Progress"
 import React from "react";
 
 function Initial(){
@@ -11,20 +12,13 @@ function Initial(){
     );
 }
 
-function Progress(){
-    return(
-    <div className="fundo andamendo">
-        0/8 CONCLUÍDOS
-    </div>
-    );
-}
-
 function Tela2(){
+    const [IconsProgress, setIconsProgress] = React.useState([])
     return(
         <>
         <Initial/>
-        <Cards/>
-        <Progress/>
+        <Cards setIconsProgress={setIconsProgress} IconsProgress={IconsProgress}/>
+        <Progress setIconsProgress={setIconsProgress} IconsProgress={IconsProgress}/>
         </>
     );
 }

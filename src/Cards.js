@@ -11,24 +11,41 @@ function CardInitial(props){
 };
 
 function CardSelected(props){
-    const [Rotate, setRotate] = React.useState(false)
+    const [Rotate, setRotate] = React.useState(false);
+    const [Check, SetCheck] = React.useState(true);
+    const [Color, SetColor] = React.useState("");
+    const [Icon, SetIcon] = React.useState("");
+    function checklist(icon, color){
+        const update = [...props.IconsProgress, icon]
+        props.setIconsProgress(update)
+        SetCheck(false);
+        SetColor(color);
+        SetIcon(icon);
+    } 
     return( Rotate? 
-    (<div className="card selected">
+    (Check?(
+    <div className="card selected">
         <div className="answer">
-        {props.answer}
+            {props.answer} 
         </div>
         <div className="options">
-            <div className="buttons red">
+            <div className="buttons redbuttom" onClick={()=>checklist("close-circle", "check red")}>
                 <p>Não</p> <p>lembrei</p>
             </div>
-            <div className="buttons orange">
+            <div className="buttons orangebuttom" onClick={()=>checklist("help-circle", "check orange")}>
                 <p>Quase Não</p> <p>lembrei</p>
             </div>
-            <div className="buttons green">
+            <div className="buttons greenbuttom" onClick={()=>checklist("checkmark-circle", "check green")}>
                 zap!
             </div>
         </div>
-    </div>) :
+    </div>) : (
+    <div className={Color}>
+        Pergunta {props.number}
+        <ion-icon name={Icon}></ion-icon>
+    </div>
+    ))
+        :
     (<div className="card selected">
         <div>
             {props.question}
@@ -42,12 +59,12 @@ function CardSelected(props){
 
 function Card(props){
     const [PlayQuestion, setPlayQuestions] = React.useState(false);
-    return(PlayQuestion? (<CardSelected question={props.question} answer={props.answer}/>) : 
+    return(PlayQuestion? (<CardSelected question={props.question} answer={props.answer} number={props.number}  setIconsProgress={props.setIconsProgress} IconsProgress={props.IconsProgress}/>) : 
     (<CardInitial number={props.number} setPlayQuestions={setPlayQuestions}/>)
     );
 }
 
-function Cards(){
+function Cards(props){
     let questions = [
     {Q:"O que é JSX?", R:"Uma extensão de linguagem do JavaScript" },
     {Q:"O React é __" , R:"uma biblioteca JavaScript para construção de interfaces"},
@@ -76,7 +93,7 @@ function Cards(){
     ];
     return(
     <div className="cards">
-        {Infocards.map((card)=> <Card number={card.number} question={card.question} answer={card.answer}/>)}
+        {Infocards.map((card)=> <Card number={card.number} question={card.question} answer={card.answer} setIconsProgress={props.setIconsProgress} IconsProgress={props.IconsProgress}/>)}
     </div>
     );
 }

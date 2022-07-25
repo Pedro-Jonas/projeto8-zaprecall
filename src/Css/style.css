@@ -149,14 +149,61 @@ div {
     border-radius: 5px;
 }
 
-.red{
+.redbuttom{
     background-color: #FF3030;
 }
 
-.orange{
+.orangebuttom{
     background-color: #FF922E;
 }
 
-.green{
+.greenbuttom{
     background-color: #2FBE34;
 }
+
+.check{
+    flex-direction: row;
+    justify-content:flex-start;
+    width: 300px;
+    height: 65px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: line-through;
+    margin-bottom: 25px;
+    font-family: 'Recursive', sans-serif;
+}
+
+.check ion-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 150px;
+}
+
+.red{
+    color: #FF3030;
+}
+
+.orange{
+    color: #FF922E;
+}
+
+.green{
+    color: #2FBE34;
+}
+
+.icons{
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.icons ion-icon {
+    width: 23px;
+    height: 23px;
+}
+
+
+
