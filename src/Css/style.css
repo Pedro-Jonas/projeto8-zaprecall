@@ -85,7 +85,7 @@ div {
     color: #333333;
     width: 30px;
     height: 30px;
-    margin-left: 150px;
+    margin-left: 165px;
 }
 
 .fundo{
@@ -177,10 +177,10 @@ div {
     font-family: 'Recursive', sans-serif;
 }
 
-.check ion-icon {
-    width: 30px;
-    height: 30px;
-    margin-left: 150px;
+.check img {
+    width: 23px;
+    height: 23px;
+    margin-left: 165px;
 }
 
 .red{
@@ -200,10 +200,26 @@ div {
     margin-top: 10px;
 }
 
-.icons ion-icon {
-    width: 23px;
-    height: 23px;
+.icons img{
+    margin-right: 5px;
 }
 
+.concluido{
+    height: 171px;
+}
 
+.message1{
+    flex-direction: row;
+    font-weight:700;
+    margin-bottom: 14px;
+}
 
+.message1 img{
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+}
+
+.message2{
+    margin-bottom: 14px;
+}

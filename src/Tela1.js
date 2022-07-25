@@ -1,4 +1,4 @@
-import logo1 from "./img/logo.png"
+import logo1 from "./img/logo.png";
 
 function Logo(){
     return(
@@ -23,6 +23,6 @@ function Tela1({setPlay}){
             <Logo/>
             <Buttom setPlay={setPlay}/>
         </div>
-    )
-}
+    );
+};
 export default Tela1;

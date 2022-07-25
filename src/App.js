@@ -9,6 +9,6 @@ function App(){
         {play?(<Tela2/>):(<Tela1 setPlay={setPlay}/>)}
         </>
     );
-}
+};
 
 export default App;

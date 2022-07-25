@@ -1,4 +1,4 @@
-import logo2 from "./img/logo-pequeno.png"
+import logo2 from "./img/logo-pequeno.png";
 import Cards from "./Cards";
 import Progress from "./Progress"
 import React from "react";
@@ -10,17 +10,18 @@ function Initial(){
             ZapRecall
         </div>
     );
-}
+};
 
 function Tela2(){
-    const [IconsProgress, setIconsProgress] = React.useState([])
+    const [IconsProgress, setIconsProgress] = React.useState([]);
+    const [ColorsProgress, setColorsProgress] = React.useState("");
     return(
         <>
         <Initial/>
-        <Cards setIconsProgress={setIconsProgress} IconsProgress={IconsProgress}/>
-        <Progress setIconsProgress={setIconsProgress} IconsProgress={IconsProgress}/>
+        <Cards setIconsProgress={setIconsProgress} IconsProgress={IconsProgress} ColorsProgress={ColorsProgress} setColorsProgress={setColorsProgress}/>
+        <Progress setIconsProgress={setIconsProgress} IconsProgress={IconsProgress} ColorsProgress={ColorsProgress} setColorsProgress={setColorsProgress}/>
         </>
     );
-}
+};
 
 export default Tela2;

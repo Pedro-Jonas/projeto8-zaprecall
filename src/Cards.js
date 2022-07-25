@@ -1,5 +1,8 @@
-import virar from "./img/setinha.png"
+import virar from "./img/setinha.png";
 import React from "react";
+import erro from "./img/erro.svg";
+import great from "./img/great.svg";
+import question from "./img/question.svg";
 
 function CardInitial(props){
     return(
@@ -15,13 +18,14 @@ function CardSelected(props){
     const [Check, SetCheck] = React.useState(true);
     const [Color, SetColor] = React.useState("");
     const [Icon, SetIcon] = React.useState("");
-    function checklist(icon, color){
-        const update = [...props.IconsProgress, icon]
-        props.setIconsProgress(update)
+    function checklist(icon, color1, color2){
+        const updateprogress = [...props.IconsProgress, icon];
+        props.setIconsProgress(updateprogress);
+        props.setColorsProgress(color2);
         SetCheck(false);
-        SetColor(color);
+        SetColor(color1);
         SetIcon(icon);
-    } 
+    }
     return( Rotate? 
     (Check?(
     <div className="card selected">
@@ -29,20 +33,20 @@ function CardSelected(props){
             {props.answer} 
         </div>
         <div className="options">
-            <div className="buttons redbuttom" onClick={()=>checklist("close-circle", "check red")}>
+            <div className="buttons redbuttom" onClick={()=>checklist(erro , "check red", "red")}>
                 <p>Não</p> <p>lembrei</p>
             </div>
-            <div className="buttons orangebuttom" onClick={()=>checklist("help-circle", "check orange")}>
+            <div className="buttons orangebuttom" onClick={()=>checklist(question , "check orange", "orange")}>
                 <p>Quase Não</p> <p>lembrei</p>
             </div>
-            <div className="buttons greenbuttom" onClick={()=>checklist("checkmark-circle", "check green")}>
+            <div className="buttons greenbuttom" onClick={()=>checklist(great , "check green", "green")}>
                 zap!
             </div>
         </div>
     </div>) : (
     <div className={Color}>
         Pergunta {props.number}
-        <ion-icon name={Icon}></ion-icon>
+        <img src={Icon} alt="icon"/>
     </div>
     ))
         :
@@ -59,10 +63,12 @@ function CardSelected(props){
 
 function Card(props){
     const [PlayQuestion, setPlayQuestions] = React.useState(false);
-    return(PlayQuestion? (<CardSelected question={props.question} answer={props.answer} number={props.number}  setIconsProgress={props.setIconsProgress} IconsProgress={props.IconsProgress}/>) : 
+    return(PlayQuestion? (<CardSelected question={props.question} answer={props.answer} number={props.number}  
+    setIconsProgress={props.setIconsProgress} IconsProgress={props.IconsProgress} 
+    ColorsProgress={props.ColorsProgress} setColorsProgress={props.setColorsProgress}/>) : 
     (<CardInitial number={props.number} setPlayQuestions={setPlayQuestions}/>)
     );
-}
+};
 
 function Cards(props){
     let questions = [
@@ -78,7 +84,7 @@ function Cards(props){
 
     function comparador() { 
         return Math.random() - 0.5; 
-    }
+    };
 
     questions.sort(comparador)
     let Infocards = [
@@ -93,9 +99,11 @@ function Cards(props){
     ];
     return(
     <div className="cards">
-        {Infocards.map((card)=> <Card number={card.number} question={card.question} answer={card.answer} setIconsProgress={props.setIconsProgress} IconsProgress={props.IconsProgress}/>)}
+        {Infocards.map((card)=> <Card number={card.number} question={card.question} answer={card.answer} 
+        setIconsProgress={props.setIconsProgress} IconsProgress={props.IconsProgress} 
+        ColorsProgress={props.ColorsProgress} setColorsProgress={props.setColorsProgress}/>)}
     </div>
     );
-}
+};
 
 export default Cards;
